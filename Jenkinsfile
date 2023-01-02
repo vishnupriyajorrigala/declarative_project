@@ -41,20 +41,19 @@ pipeline {
          }
 
        }
-    stage('SonarQube'){
+       stage('SonarQube'){
 
        steps{
 
-             bat label: '', script: '''mvn sonar:sonar \
+             bat label:'',script:'''mvn sonar:sonar\
 
-             -Dsonar.host.url=http://localhost:9000 \
+             -Dsonar.host.url=http://localhost:9000\
 
               -Dsonar.login=squ_4f0cb92cd9347324a7ca98ec0baf84b1edc5aec0'''
 
              }
 
          } 
- 
  
 
          stage('Maven Package'){
@@ -86,10 +85,5 @@ pipeline {
           
 
   }
-  post {
-       always {
-           cucumber '**/cucumber.json'
-       }
-   }
-
+  
 }
